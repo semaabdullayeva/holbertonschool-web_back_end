@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import math
 
-def floor(n: float) -> float:
-     return int(n) if n >= 0 else int(n) - 1
+def floor(n: float) -> int:
+    return math.floor(n)
