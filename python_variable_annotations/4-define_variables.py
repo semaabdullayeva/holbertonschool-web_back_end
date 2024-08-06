@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """ Define variables"""
 
 a: int = 1
