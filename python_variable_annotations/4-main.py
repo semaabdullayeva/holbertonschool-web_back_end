@@ -13,3 +13,4 @@ print(
     )
 )
 print("school is a {} with a value of {}".format(type(school), school))
+
