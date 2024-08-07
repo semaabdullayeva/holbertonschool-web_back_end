@@ -3,6 +3,7 @@
 """
 import asyncio
 import random
+from typing import Generator
 
 """Write a coroutine called async_generator that takes no
     arguments.
@@ -12,7 +13,7 @@ import random
     10. Use the random module."""
 
 
-async def async_generator():
+async def async_generator()-> Generator[float, None, None]:
     for i in range(10):
         await asyncio.sleep(1)
         yield random.randint(0, 10)
