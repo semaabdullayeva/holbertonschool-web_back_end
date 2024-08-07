@@ -5,7 +5,7 @@ Create a measure_time function with integers n and max_delay as arguments that m
 import asyncio
 import time
 
-wain_n = __import__("1-concurrent_coroutine").wait_n
+wait_n = __import__("1-concurrent_coroutines").wait_n
 
 
 def measure_time(n: int, max_delay: int) -> float:
@@ -15,4 +15,3 @@ def measure_time(n: int, max_delay: int) -> float:
     end_time = time.time()
     total_time = end_time - start_time
     return total_time / n
-
