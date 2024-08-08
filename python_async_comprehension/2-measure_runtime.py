@@ -3,6 +3,8 @@ import asyncio
 import time
 
 """Run time for four parallel comprehensions """
+
+
 async_comprehension = __import__("1-async_comprehension").async_comprehension
 
 
@@ -12,7 +14,7 @@ async def measure_runtime() -> float:
     in parallel using asyncio.gather.
     measure_runtime should measure the total runtime and return it.
     Notice that the total runtime is roughly 10 seconds,
-    explain it to yourself. """
+    explain it to yourself."""
     start_time = time.time()
     tasks = []
     for i in range(4):
