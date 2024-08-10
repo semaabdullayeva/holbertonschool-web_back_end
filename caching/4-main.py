@@ -1,40 +1,30 @@
-#!/usr/bin/env python3
-""" MRUCache Module """
-from base_caching import BaseCaching
+#!/usr/bin/python3
+""" 4-main """
+MRUCache = __import__('4-mru_cache').MRUCache
 
-class MRUCache(BaseCaching):
-    """ MRUCache class that inherits from BaseCaching """
-
-    def __init__(self):
-        """ Initialize the MRUCache """
-        super().__init__()
-        self.cache_data = {}
-        self.order = []  # List to track the order of access
-
-    def put(self, key, item):
-        """ Add an item to the cache """
-        if key is None or item is None:
-            return
-        
-        if key in self.cache_data:
-            # Update the item in the cache
-            self.order.remove(key)
-        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            # Remove the most recently used item (MRU)
-            mru_key = self.order.pop()
-            del self.cache_data[mru_key]
-            print(f"DISCARD: {mru_key}")
-        
-        # Add the new item
-        self.cache_data[key] = item
-        self.order.append(key)
-
-    def get(self, key):
-        """ Get an item by key """
-        if key is None or key not in self.cache_data:
-            return None
-        
-        # Move the accessed item to the end to mark it as recently used (MRU)
-        self.order.remove(key)
-        self.order.append(key)
-        return self.cache_data[key]
+my_cache = MRUCache()
+my_cache.put("A", "Hello")
+my_cache.put("B", "World")
+my_cache.put("C", "Holberton")
+my_cache.put("D", "School")
+my_cache.print_cache()
+print(my_cache.get("B"))
+my_cache.put("E", "Battery")
+my_cache.print_cache()
+my_cache.put("C", "Street")
+my_cache.print_cache()
+print(my_cache.get("A"))
+print(my_cache.get("B"))
+print(my_cache.get("C"))
+my_cache.put("F", "Mission")
+my_cache.print_cache()
+my_cache.put("G", "San Francisco")
+my_cache.print_cache()
+my_cache.put("H", "H")
+my_cache.print_cache()
+my_cache.put("I", "I")
+my_cache.print_cache()
+my_cache.put("J", "J")
+my_cache.print_cache()
+my_cache.put("K", "K")
+my_cache.print_cache()
