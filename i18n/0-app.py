@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-""" Base flask app"""
+"""
+This module sets up a basic Flask application with a single route.
+"""
 from flask import Flask, render_template
 
 
@@ -8,7 +10,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    """ Home Page
+    """
+    The index route that returns the rendered index.html template.
+    
+    Returns:
+        str: Rendered HTML content.
     """
     return render_template('0-index.html')
 
