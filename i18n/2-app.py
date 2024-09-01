@@ -17,7 +17,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route('/task')
+@app.route('/')
 def home():
     """ Home Page
     """
