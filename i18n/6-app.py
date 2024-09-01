@@ -40,18 +40,38 @@ def get_user() -> Union[dict, None]:
     return user[login_user]
 
 
+# @babel.localeselector
+# def get_locale():
+#     """Get locale"""
+#     lang = request.args.get("locale")
+#     if lang in app.config["LANGUAGES"]:
+#         return lang
+
+#     lang = request.headers.get("locale", None)
+#     if lang in app.config["LANGUAGES"]:
+#         return lang
+
+#     return Config.BABEL_DEFAULT_LOCALE
 @babel.localeselector
 def get_locale():
     """Get locale"""
-    lang = request.args.get("locale")
-    if lang in app.config["LANGUAGES"]:
-        return lang
+    # 1. Locale from URL parameters
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
 
-    lang = request.headers.get("locale", None)
-    if lang in app.config["LANGUAGES"]:
-        return lang
+    # 2. Locale from user settings
+    user = g.get('user', None)
+    if user and user['locale'] in app.config['LANGUAGES']:
+        return user['locale']
 
-    return Config.BABEL_DEFAULT_LOCALE
+    # 3. Locale from request header
+    locale = request.headers.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
+
+    # 4. Default locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
