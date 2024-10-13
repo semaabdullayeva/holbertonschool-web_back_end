@@ -1,3 +1,5 @@
-// 0-console.js
-const displayMessage = (aString) => console.log(aString);
+const displayMessage = (str) => {
+  console.log(str);
+};
+
 module.exports = displayMessage;
